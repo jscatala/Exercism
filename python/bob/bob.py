@@ -1,16 +1,9 @@
 # -*- coding: utf-8 -*-
 
 def you_say(words):
-    i = 0
-    UPPER = True
-    checked = False
-    while(UPPER and i < len(words[:-1])):
-        if words[i].isalpha():
-            checked = True
-            UPPER = words[i].isupper()
-        i = i + 1
+    r = [l.isupper() for l in words[:-1] if l.isalpha()]
 
-    if UPPER and checked:
+    if r and reduce(lambda a,x : a and x, r): 
         return 'Whoa, chill out!'
     else:
         if words[-1] == '?':
